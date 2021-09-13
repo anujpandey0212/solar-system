@@ -14,7 +14,7 @@ void main() {
   // is responsible for setting
   vec4 p=a_position;
   gl_Position = a_position;//vec4(1,a_position.xyz);
-  gl_Position = vec4(sin(u_time)*a_position.x,a_position.yzw);
+  gl_Position = vec4(sin(u_time)*a_position.x,cos(u_time)*a_position.y,(u_time)*a_position.z,a_position.w);
   col=p;
   
 }
@@ -135,8 +135,8 @@ function main() {
 
   // draw
   var primitiveType = gl.TRIANGLES;
-  var offset = 3;
-  var count = 6;
+  var offset = 0;
+  var count = 3;
   gl.uniform1f(timeUniformLocation, 1);
   gl.drawArrays(primitiveType, offset, count);
   setInterval(update,30);
