@@ -145,7 +145,7 @@ function main() {
 }
 var t=0;
 function update(){
-   gl.uniform1f(timeUniformLocation, t+=0.01);
+   gl.uniform1f(timeUniformLocation, t+=0.023);
    gl.drawArrays(gl.TRIANGLES, 3, 3);
 }
 
