@@ -6,6 +6,7 @@ var vertexShaderSource = `#version 300 es
 // It will receive data from a buffer
 in vec4 a_position;
 uniform float u_time;
+uniform vec4 location;
 out vec4 col;
 // all shaders have a main function
 void main() {
@@ -15,7 +16,7 @@ void main() {
   vec4 p=a_position;
   gl_Position = a_position;//vec4(1,a_position.xyz);
   gl_Position = vec4(sin(u_time)*a_position.x,cos(u_time)*a_position.y,(u_time)*a_position.z,a_position.w);
-  col=p;
+  col=abs(gl_Position);
   
 }
 
@@ -65,7 +66,8 @@ function createProgram(gl, vertexShader, fragmentShader) {
   return undefined;
 }
 var gl;
-var timeUniformLocation 
+var timeUniformLocation;
+var instantlocation;
 function main() {
   // Get A WebGL context
   var canvas = document.querySelector("#c");
